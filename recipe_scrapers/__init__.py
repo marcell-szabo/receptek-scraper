@@ -454,7 +454,7 @@ SCRAPERS = {
 }
 
 
-def scrape_me(url_path: str, **options: dict[str, Any]) -> AbstractScraper:
+async def scrape_me(url_path: str, **options: dict[str, Any]) -> AbstractScraper:
     host_name = get_host_name(url_path)
 
     try:
@@ -469,7 +469,9 @@ def scrape_me(url_path: str, **options: dict[str, Any]) -> AbstractScraper:
                 raise NoSchemaFoundInWildMode(url_path)
             return wild_scraper
 
-    return scraper(url_path, **options)
+    scraped_data = await scraper.create(url_path, options)
+    print('maci',scraped_data)
+    return scraped_data
 
 
 def scrape_html(
