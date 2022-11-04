@@ -30,7 +30,6 @@ class AbstractScraper:
 
     @classmethod
     async def create(cls, url: Union[str, None], options: dict[str, Any]):
-        print(cls)
         self = cls()
         await self._scrape(url, **options)
         return self
@@ -87,7 +86,7 @@ class AbstractScraper:
     def canonical_url(self):
         canonical_link = self.soup.find("link", {"rel": "canonical", "href": True})
         if canonical_link:
-            return urljoin(self.url, canonical_link["href"])
+            return urljoin(str(self.url), canonical_link["href"])
         return self.url
 
     def title(self):

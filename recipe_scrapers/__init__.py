@@ -470,7 +470,6 @@ async def scrape_me(url_path: str, **options: dict[str, Any]) -> AbstractScraper
             return wild_scraper
 
     scraped_data = await scraper.create(url_path, options)
-    print('maci',scraped_data)
     return scraped_data
 
 

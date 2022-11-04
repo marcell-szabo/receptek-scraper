@@ -245,3 +245,9 @@ class SchemaOrg:
         if description is None:
             raise SchemaOrgException("No description data in SchemaOrg.")
         return normalize_string(description)
+
+    def reviews(self):
+        review = self.data.get("review")
+        if review is None:
+            raise SchemaOrgException("No description data in SchemaOrg.")
+        return normalize_string(review)
