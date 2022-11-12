@@ -14,7 +14,7 @@ class StreetKitchen(AbstractScraper):
 
     def total_time(self):
         try:
-            time = self.soup.find(["li", "p"], text=re.compile('Elkészítési idő:.*')).get_text()
+            time = self.soup.find(["li", "p"], text=re.compile('Elkészítési idő:.*|Elkészítés.*:.*')).get_text()
             return get_minutes(time)
         except AttributeError:
             pass
